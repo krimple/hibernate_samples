@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="ehcache.xsd"
+             updateCheck="false" monitoring="autodetect"
+             dynamicConfig="true">
+
+    <cache eternal="true"
+           maxElementsInMemory="1000"
+           name="mySoCalledCache"
+           overflowToDisk="true">
+    </cache>
+
+
+
+</ehcache>
