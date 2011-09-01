@@ -1,23 +1,36 @@
 package org.chariot.hiber.db;
 
 import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-/**
- * Created by IntelliJ IDEA.
- * User: krimple
- * Date: 5/28/11
- * Time: 6:59 AM
- * To change this template use File | Settings | File Templates.
- */
 @Embeddable
 public class PurchaseElement {
 
-    @ManyToOne
-    private Product product;
+	@ManyToOne
+	private Product product;
 
-    private int quantity;
+	private int quantity;
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "PurchaseElement [product=" + product + ", quantity=" + quantity
+				+ "]";
+	}
 
 }

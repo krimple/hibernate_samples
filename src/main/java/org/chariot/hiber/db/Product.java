@@ -36,4 +36,11 @@ public class Product {
     public BigDecimal getListPrice() {
         return listPrice;
     }
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", listPrice="
+				+ listPrice + "]";
+	}
+
 }
