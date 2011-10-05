@@ -50,7 +50,7 @@
         <hibernate.version>3.6.7.Final</hibernate.version>
         <java.version>1.6</java.version>
         <jta.version>1.1</jta.version>
-        <junit.version>4.9</junit.version>
+        <junit.version>4.10</junit.version>
         <logback.version>0.9.30</logback.version>
         <maven.assembly.plugin>2.2.1</maven.assembly.plugin>
         <maven.clean.plugin>2.4.1</maven.clean.plugin>
@@ -448,11 +448,6 @@
 
     <pluginRepositories>
         <pluginRepository>
-            <id>maven2-repository.dev.java.net</id>
-            <name>Java.net Maven 2 Repository</name>
-            <url>http://download.java.net/maven/2</url>
-        </pluginRepository>
-        <pluginRepository>
             <id>spring-maven-release</id>
             <name>Spring Maven Release Repository</name>
             <url>http://maven.springframework.org/release</url>
@@ -461,11 +456,6 @@
             <id>spring-maven-milestone</id>
             <name>Spring Maven Milestone Repository</name>
             <url>http://maven.springframework.org/milestone</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring-roo-repository</id>
-            <name>Spring Roo Repository</name>
-            <url>http://spring-roo-repository.springsource.org/release</url>
         </pluginRepository>
         <pluginRepository>
             <id>repository.springsource.com-maven-bundles-external</id>
@@ -484,7 +474,6 @@
             <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Snapshots</name>
             <url>http://repository.springsource.com/maven/bundles/snapshot/</url>
         </pluginRepository>
-
     </pluginRepositories>
 
     <repositories>
@@ -504,11 +493,6 @@
             <url>http://maven.springframework.org/snapshot</url>
         </repository>
         <repository>
-            <id>spring-roo-repository</id>
-            <name>Spring Roo Repository</name>
-            <url>http://spring-roo-repository.springsource.org/release</url>
-        </repository>
-        <repository>
             <id>repository.springsource.com-maven-bundles-external</id>
             <url>http://repository.springsource.com/maven/bundles/external</url>
         </repository>
@@ -519,23 +503,6 @@
         <repository>
             <id>repository.springsource.com-maven-bundles-release</id>
             <url>http://repository.springsource.com/maven/bundles/release</url>
-        </repository>
-
-        <repository>
-            <id>java.net.maven2</id>
-            <name>Java.net Maven 2 Repository</name>
-            <url>http://download.java.net/maven/2</url>
-        </repository>
-        <repository>
-            <id>jboss.repository.releases</id>
-            <name>JBoss Repo</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/releases
-            </url>
-        </repository>
-        <repository>
-            <id>jboss.repository.releases.public</id>
-            <name>JBoss Repo Public</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public-jboss</url>
         </repository>
         <repository>
             <id>google-maven-snapshot-repository</id>
