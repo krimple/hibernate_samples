@@ -22,7 +22,7 @@
 	<!-- Console Logging, removed date & thread detail for easier console readability -->
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%-5level %logger{5} - %msg%n</pattern>
+			<pattern>%-5level %logger{0} - %msg%n</pattern>
 		</encoder>
 	</appender>
 
