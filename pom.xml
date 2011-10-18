@@ -73,9 +73,9 @@
         <postgresql.version>9.0-801.jdbc4</postgresql.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <servlet.version>2.5</servlet.version>
-        <slf4j.version>1.6.2</slf4j.version>
+        <slf4j.version>1.6.3</slf4j.version>
         <spring.version>3.1.0.RC1</spring.version>
-        <!-- spring.version>3.0.6.RELEASE</spring.version -->
+        <!-- spring.version>3.1.0.RC1</spring.version -->
         <validation.version>1.0.0.GA</validation.version>
     </properties>
 
