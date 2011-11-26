@@ -36,7 +36,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="org.chariot.hiber.db" />
 		<property name="hibernateProperties">
-			<!-- you can set the following additional values
+			<!-- you can set the following additional values or see persistence.xml
 				hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 				hibernate.generate_statistics=true
 				hibernate.show_sql=true

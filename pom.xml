@@ -5,7 +5,7 @@
     <groupId>org.chariot.hiber</groupId>
     <artifactId>hiber</artifactId>
     <packaging>jar</packaging>
-    <version>0.2.4</version>
+    <version>0.2.5</version>
     <name>hiber</name>
     <developers>
         <developer>
@@ -40,18 +40,18 @@
         <commons.collections.version>3.2.1</commons.collections.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
         <commons.io.version>2.1</commons.io.version>
-        <commons.lang.version>2.6</commons.lang.version>
+        <commons.lang.version>3.0.1</commons.lang.version>
         <commons.net.version>3.0</commons.net.version>
         <commons.pool.version>1.5.6</commons.pool.version>
         <hibernate.annotations.version>3.5.6-Final</hibernate.annotations.version>
         <hibernate.jmx.version>3.5.6-Final</hibernate.jmx.version>
         <hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
         <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
-        <hibernate.version>3.6.7.Final</hibernate.version>
+        <hibernate.version>3.6.8.Final</hibernate.version>
         <java.version>1.6</java.version>
         <jta.version>1.1</jta.version>
         <junit.version>4.10</junit.version>
-        <logback.version>0.9.30</logback.version>
+        <logback.version>1.0.0</logback.version>
         <maven.assembly.plugin>2.2.1</maven.assembly.plugin>
         <maven.clean.plugin>2.4.1</maven.clean.plugin>
         <maven.compiler.plugin>2.3.2</maven.compiler.plugin>
@@ -73,7 +73,7 @@
         <postgresql.version>9.0-801.jdbc4</postgresql.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <servlet.version>2.5</servlet.version>
-        <slf4j.version>1.6.3</slf4j.version>
+        <slf4j.version>1.6.4</slf4j.version>
         <spring.version>3.1.0.RC1</spring.version>
         <!-- spring.version>3.1.0.RC1</spring.version -->
         <validation.version>1.0.0.GA</validation.version>
@@ -380,8 +380,8 @@
                 <version>${maven.versions.plugin}</version>
                 <dependencies>
                     <dependency>
-                        <groupId>commons-lang</groupId>
-                        <artifactId>commons-lang</artifactId>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-lang3</artifactId>
                         <version>${commons.lang.version}</version>
                     </dependency>
                     <dependency>
