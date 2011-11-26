@@ -1,116 +1,106 @@
-<configuration>
-	<!-- Full Details on Layout Patterns at:
-		http://logback.qos.ch/manual/layouts.html -->
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="5 seconds">
 
-	<!--
-		ConvSpec LoggerName Result
-		=========== ==================== ====================
-		%logger myPkg.sub.sample.Bar myPkg.sub.sample.Bar
-		%logger{0} myPkg.sub.sample.Bar Bar
-		%logger{5} myPkg.sub.sample.Bar m.s.s.Bar
-		%logger{15} myPkg.sub.sample.Bar m.s.sample.Bar
-		%logger{36} myPkg.sub.sample.Bar myPkg.sub.sample.Bar
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
 
-		NOTE: the number in braces is a max width compressing up to,
-		but excluding the classname.
-	-->
+    <!-- Full Details on Layout Patterns at:
+         http://logback.qos.ch/manual/layouts.html -->
 
-	<!-- To enable JMX Managment
-		<jmxConfigurator />
-	-->
+    <!--
+         ConvSpec LoggerName Result
+         =========== ==================== ====================
+         %logger myPkg.sub.sample.Bar myPkg.sub.sample.Bar
+         %logger{0} myPkg.sub.sample.Bar Bar
+         %logger{5} myPkg.sub.sample.Bar m.s.s.Bar
+         %logger{15} myPkg.sub.sample.Bar m.s.sample.Bar
+         %logger{36} myPkg.sub.sample.Bar myPkg.sub.sample.Bar
 
-	<!-- Console Logging, removed date & thread detail for easier console readability -->
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%-5level %logger{0} - %msg%n</pattern>
-		</encoder>
-	</appender>
+         NOTE: the number in braces is a max width compressing up to,
+         but excluding the classname.
+     -->
 
-<!-- Uncomment section below for File Logging -->
-<!--
-  <appender name="file" class="ch.qos.logback.core.FileAppender">
-    <file>hiber-app.log</file>
-    <append>true</append>
-    <encoder>
-      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
-    </encoder>
-  </appender>
- -->
- <!-- OR - Daily Rollover File keeping History for 3 days.
-   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>logFile.log</file>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
-      <maxHistory>3</maxHistory>
-    </rollingPolicy>
+    <!-- To enable JMX Managment
+         <jmxConfigurator />
+     -->
 
-    <encoder>
-      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
-    </encoder>
-  </appender>
- -->
+    <!-- Console Logging, removed date & thread detail for easier console readability -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%-5level %logger{0} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Uncomment section below for File Logging -->
+    <!--
+     <appender name="file" class="ch.qos.logback.core.FileAppender">
+       <file>hiber-app.log</file>
+       <append>true</append>
+       <encoder>
+         <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+       </encoder>
+     </appender>
+    -->
+    <!-- OR - Daily Rollover File keeping History for 3 days.
+      <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+       <file>logFile.log</file>
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+         <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+         <maxHistory>3</maxHistory>
+       </rollingPolicy>
+
+       <encoder>
+         <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+       </encoder>
+     </appender>
+    -->
 
 
-	<!-- Logging levels: error, warn, info, debug, trace -->
+    <!-- Logging levels: error, warn, info, debug, trace (case insensitive) -->
 
-	<!-- #############################
-		### Our Project ###
-		############################# -->
-	<logger name="org.chariot" level="trace" />
+    <!-- ### Our Project ### -->
+    <logger name="org.chariot" level="trace"/>
 
-	<!-- #############################
-		### Spring JDBC ###
-		############################# -->
-	<logger name="org.springframework.jdbc" level="warn" />
+    <!-- ### Spring JDBC ### -->
+    <logger name="org.springframework.jdbc" level="warn"/>
 
-	<!-- #############################
-		### Spring TRANSACTION ###
-		############################# -->
-	<logger name="org.springframework.transaction" level="info" />
+    <!-- ### Spring TRANSACTION ### -->
+    <logger name="org.springframework.transaction" level="info"/>
 
-	<!-- #############################
-		### Spring ORM logging ###
-		############################# -->
-	<logger name="org.springframework.orm" level="debug" />
+    <!-- ### Spring ORM logging ### -->
+    <logger name="org.springframework.orm" level="debug"/>
 
-	<!-- #############################
-		### Spring HIBERNATE ###
-		############################# -->
-	<logger name="org.springframework.orm.hibernate" level="warn" />
+    <!-- ### Spring HIBERNATE ### -->
+    <logger name="org.springframework.orm.hibernate" level="warn"/>
 
-	<!-- #############################
-		### Spring JPA ###
-		############################# -->
-	<logger name="org.springframework.orm.jpa" level="warn" />
+    <!-- ### Spring JPA ### -->
+    <logger name="org.springframework.orm.jpa" level="warn"/>
 
-	<!-- #############################
-		### All Hibernate ###
-		############################# -->
-	<logger name="org.hibernate" level="info" />
+    <!-- ### All Hibernate ### -->
+    <logger name="org.hibernate" level="info"/>
 
-	<!-- #############################
-		### SQL Fragmnts & Stmnts ###
-		############################# -->
-	<logger name="org.hibernate.sql" level="trace" />
+    <!-- ### SQL Fragmnts & Stmnts ### -->
+    <logger name="org.hibernate.sql" level="trace"/>
 
-	<!-- #############################
-		### Map Java-JDBC types ###
-		############################# -->
-	<logger name="org.hibernate.type" level="warn" />
+    <!-- ### Map Java-JDBC types ### -->
+    <logger name="org.hibernate.type" level="warn"/>
 
-	<!-- #############################
-		### Schema Gen and DDL ###
-		############################# -->
-	<logger name="org.hibernate.tool.hbm2ddl" level="warn" />
+    <!-- ### Schema Gen and DDL ### -->
+    <logger name="org.hibernate.tool.hbm2ddl" level="warn"/>
 
-	<!-- #############################
-		### 2nd Lvl Query Caching ###
-		############################# -->
-	<logger name="org.hibernate.cache" level="warn" />
+    <!-- ### 2nd Lvl Query Caching ### -->
+    <logger name="org.hibernate.cache" level="warn"/>
 
-	<!-- If unspecified, all packages will use this level, and appender(s) -->
-	<root level="warn">
-		<appender-ref ref="console" />
-		<!-- <appender-ref ref="file" />  -->
-	</root>
+    <!-- ### EH Caching ### -->
+    <logger name="net.sf.ehcache" level="debug"/>
+
+    <!-- ### Hibernate EJB Caching ### -->
+    <logger name="org.hibernate.ejb" level="debug"/>
+
+    <!-- If unspecified, all packages will use this level, and appender(s) -->
+    <root level="warn">
+        <appender-ref ref="console"/>
+        <!-- <appender-ref ref="file" />  -->
+    </root>
 </configuration>
