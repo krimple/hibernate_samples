@@ -5,7 +5,7 @@
     <groupId>org.chariot.hiber</groupId>
     <artifactId>hiber</artifactId>
     <packaging>jar</packaging>
-    <version>0.2.4</version>
+    <version>0.2.6</version>
     <name>hiber</name>
     <developers>
         <developer>
@@ -35,47 +35,50 @@
     </developers>
 
     <properties>
+        <asm.version>4.0</asm.version>
         <cglib.version>2.2.2</cglib.version>
         <commons.codec.version>1.4</commons.codec.version>
         <commons.collections.version>3.2.1</commons.collections.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
         <commons.io.version>2.1</commons.io.version>
-        <commons.lang.version>2.6</commons.lang.version>
+        <commons.lang.version>3.1</commons.lang.version>
         <commons.net.version>3.0</commons.net.version>
-        <commons.pool.version>1.5.6</commons.pool.version>
+        <commons.pool.version>1.6</commons.pool.version>
+        <ehcache.version>2.5.0</ehcache.version>
         <hibernate.annotations.version>3.5.6-Final</hibernate.annotations.version>
         <hibernate.jmx.version>3.5.6-Final</hibernate.jmx.version>
         <hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
         <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
-        <hibernate.version>3.6.7.Final</hibernate.version>
+        <hibernate.version>3.6.8.Final</hibernate.version>
         <java.version>1.6</java.version>
         <jta.version>1.1</jta.version>
         <junit.version>4.10</junit.version>
-        <logback.version>0.9.30</logback.version>
-        <maven.assembly.plugin>2.2.1</maven.assembly.plugin>
+        <logback.version>1.0.0</logback.version>
+        <maven.assembly.plugin>2.2.2</maven.assembly.plugin>
         <maven.clean.plugin>2.4.1</maven.clean.plugin>
         <maven.compiler.plugin>2.3.2</maven.compiler.plugin>
-        <maven.dependency.plugin>2.3</maven.dependency.plugin>
+        <maven.dependency.plugin>2.4</maven.dependency.plugin>
         <maven.deploy.plugin>2.7</maven.deploy.plugin>
         <maven.eclipse.plugin>2.8</maven.eclipse.plugin>
         <maven.enforcer.plugin>1.0.1</maven.enforcer.plugin>
         <maven.groovy.plugin>1.3</maven.groovy.plugin>
         <maven.idea.plugin>2.2</maven.idea.plugin>
         <maven.jar.plugin>2.3.1</maven.jar.plugin>
-        <maven.jetty.plugin>8.0.1.v20110908</maven.jetty.plugin>
+        <maven.jetty.plugin>8.1.0.RC4</maven.jetty.plugin>
         <maven.resources.plugin>2.5</maven.resources.plugin>
         <maven.source.plugin>2.7.1</maven.source.plugin>
-        <maven.surefire.plugin>2.10</maven.surefire.plugin>
-        <maven.tomcat.plugin>1.1</maven.tomcat.plugin>
+        <maven.surefire.plugin>2.11</maven.surefire.plugin>
+        <maven.tomcat.plugin>2.0-SNAPSHOT</maven.tomcat.plugin>
         <maven.versions.plugin>1.2</maven.versions.plugin>
         <maven.version.range>[2.2.1,3.1.0)</maven.version.range>
         <maven.war.plugin>2.1.1</maven.war.plugin>
-        <postgresql.version>9.0-801.jdbc4</postgresql.version>
+        <!--<postgresql.version>9.0-801.jdbc4</postgresql.version>-->
+        <postgresql.version>9.1-901-1.jdbc4</postgresql.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <servlet.version>2.5</servlet.version>
-        <slf4j.version>1.6.3</slf4j.version>
-        <spring.version>3.1.0.RC1</spring.version>
-        <!-- spring.version>3.1.0.RC1</spring.version -->
+        <slf4j.version>1.6.4</slf4j.version>
+        <spring.version>3.1.0.RELEASE</spring.version>
+        <!-- spring.version>3.1.0.RELEASE</spring.version -->
         <validation.version>1.0.0.GA</validation.version>
     </properties>
 
@@ -84,131 +87,77 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>${servlet.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Spring dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>cglib</groupId>
-                    <artifactId>cglib</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>dom4j</groupId>
-                    <artifactId>dom4j</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>${hibernate.jpa.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.validator.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.xml.bind</groupId>
-                    <artifactId>jaxb-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.xml.bind</groupId>
-                    <artifactId>jaxb-impl</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>${validation.version}</version>
         </dependency>
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
-            <version>${cglib.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>jta</artifactId>
-            <version>${jta.version}</version>
         </dependency>
 
         <dependency>
@@ -219,40 +168,10 @@
         <dependency>
             <groupId>commons-pool</groupId>
             <artifactId>commons-pool</artifactId>
-            <version>${commons.pool.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
-            <version>${commons.dbcp.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-pool</groupId>
-                    <artifactId>commons-pool</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>xerces</groupId>
-                    <artifactId>xerces</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>xerces</groupId>
-                    <artifactId>xercesImpl</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>xml-apis</groupId>
-                    <artifactId>xml-apis</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
@@ -306,19 +225,143 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat6-maven-plugin</artifactId>
                 <version>${maven.tomcat.plugin}</version>
+                <configuration>
+                    <systemProperties>
+                        <com.sun.management.jmxremote>true</com.sun.management.jmxremote>
+                        <com.sun.management.jmxremote.port>8050</com.sun.management.jmxremote.port>
+                        <com.sun.management.jmxremote.ssl>false</com.sun.management.jmxremote.ssl>
+                        <com.sun.management.jmxremote.authenticate>false</com.sun.management.jmxremote.authenticate>
+                        <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>
+                        <logback.ContextSelector>JNDI</logback.ContextSelector>
+                    </systemProperties>
+                    <!--<path>/</path>-->
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jcl-over-slf4j</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jul-to-slf4j</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                        <version>${logback.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-access</artifactId>
+                        <version>${logback.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>${maven.tomcat.plugin}</version>
+                <configuration>
+                    <systemProperties>
+                        <com.sun.management.jmxremote>true</com.sun.management.jmxremote>
+                        <com.sun.management.jmxremote.port>8050</com.sun.management.jmxremote.port>
+                        <com.sun.management.jmxremote.ssl>false</com.sun.management.jmxremote.ssl>
+                        <com.sun.management.jmxremote.authenticate>false</com.sun.management.jmxremote.authenticate>
+                        <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>
+                        <logback.ContextSelector>JNDI</logback.ContextSelector>
+                    </systemProperties>
+                    <!--<path>/</path>-->
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jcl-over-slf4j</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jul-to-slf4j</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                        <version>${logback.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-access</artifactId>
+                        <version>${logback.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${maven.jetty.plugin}</version>
                 <configuration>
-                    <webAppConfig>
-                        <contextPath>/${project.name}</contextPath>
-                    </webAppConfig>
+                    <reload>manual</reload>
+                    <requestLog implementation="ch.qos.logback.access.jetty.RequestLogImpl">
+                        <fileName>./src/main/resources/logback-access.xml</fileName>
+                    </requestLog>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jcl-over-slf4j</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jul-to-slf4j</artifactId>
+                        <version>${slf4j.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                        <version>${logback.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-access</artifactId>
+                        <version>${logback.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -358,8 +401,14 @@
                                     <searchTransitive>true</searchTransitive>
                                     <excludes>
                                         <exclude>commons-logging</exclude>
-                                        <exclude>log4j:log4j</exclude>
+                                        <exclude>commons-lang</exclude>
+                                        <exclude>commons-digester</exclude>
+                                        <exclude>aspectj</exclude>
+                                        <exclude>asm</exclude>
+                                        <exclude>hsqldb:hsqldb</exclude>
                                         <exclude>org.slf4j*:1.5*</exclude>
+                                        <exclude>commons-logging</exclude>
+                                        <exclude>log4j</exclude>
                                     </excludes>
                                 </bannedDependencies>
                                 <requireMavenVersion>
@@ -380,8 +429,8 @@
                 <version>${maven.versions.plugin}</version>
                 <dependencies>
                     <dependency>
-                        <groupId>commons-lang</groupId>
-                        <artifactId>commons-lang</artifactId>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-lang3</artifactId>
                         <version>${commons.lang.version}</version>
                     </dependency>
                     <dependency>
@@ -403,7 +452,7 @@
                         </goals>
                         <configuration>
                             <source>
-                                log.info("*** Spwing vershun Vawlu is '${spring.version}'...")
+                                log.info("*** Using Spring version '${spring.version}'...")
                             </source>
                         </configuration>
                     </execution>
@@ -444,38 +493,180 @@
                 <artifactId>logback-access</artifactId>
                 <version>${logback.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>asm</groupId>
+                        <artifactId>asm-attrs</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-ehcache</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>cglib</groupId>
+                        <artifactId>cglib</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>dom4j</groupId>
+                        <artifactId>dom4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.0-api</artifactId>
+                <version>${hibernate.jpa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.xml.bind</groupId>
+                        <artifactId>jaxb-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.sun.xml.bind</groupId>
+                        <artifactId>jaxb-impl</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-core</artifactId>
+                <version>${ehcache.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib-nodep</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>${jta.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons.collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-pool</groupId>
+                <artifactId>commons-pool</artifactId>
+                <version>${commons.pool.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${commons.dbcp.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>commons-pool</groupId>
+                        <artifactId>commons-pool</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xerces</groupId>
+                        <artifactId>xerces</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xerces</groupId>
+                        <artifactId>xercesImpl</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xml-apis</groupId>
+                        <artifactId>xml-apis</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-maven-release</id>
-            <name>Spring Maven Release Repository</name>
-            <url>http://maven.springframework.org/release</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring-maven-milestone</id>
-            <name>Spring Maven Milestone Repository</name>
-            <url>http://maven.springframework.org/milestone</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>repository.springsource.com-maven-bundles-external</id>
-            <url>http://repository.springsource.com/maven/bundles/external</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>repository.springsource.com-maven-bundles-milestone</id>
-            <url>http://repository.springsource.com/maven/bundles/milestone</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>repository.springsource.com-maven-bundles-release</id>
-            <url>http://repository.springsource.com/maven/bundles/release</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>com.springsource.repository.bundles.snapshot</id>
-            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Snapshots</name>
-            <url>http://repository.springsource.com/maven/bundles/snapshot/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
     <repositories>
         <repository>
@@ -492,26 +683,6 @@
             <id>spring.maven.snapshot</id>
             <name>Spring Snapshot Repository</name>
             <url>http://maven.springframework.org/snapshot</url>
-        </repository>
-        <repository>
-            <id>repository.springsource.com-maven-bundles-external</id>
-            <url>http://repository.springsource.com/maven/bundles/external</url>
-        </repository>
-        <repository>
-            <id>repository.springsource.com-maven-bundles-milestone</id>
-            <url>http://repository.springsource.com/maven/bundles/milestone</url>
-        </repository>
-        <repository>
-            <id>repository.springsource.com-maven-bundles-release</id>
-            <url>http://repository.springsource.com/maven/bundles/release</url>
-        </repository>
-        <repository>
-            <id>google-maven-snapshot-repository</id>
-            <name>Google Maven Snapshot Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
         </repository>
     </repositories>
 

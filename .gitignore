@@ -1,1 +1,16 @@
+.classpath
+.clover
+derby-home
+derby.log
+.DS_Store
+.idea
+*.iml
+*.ipr
+*.iws
+*.log
+.project
+.settings
+.springBeans
+surefire*
+*.swp
 target
