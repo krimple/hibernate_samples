@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true" scan="true" scanPeriod="5 seconds">
-    <!--<jmxConfigurator />-->
-
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>
     </contextListener>
@@ -15,7 +13,6 @@
             <pattern>%-5level %logger{0} - %msg%n</pattern>
         </encoder>
     </appender>
-
 
     <!-- Logging levels: error, warn, info, debug, trace -->
 

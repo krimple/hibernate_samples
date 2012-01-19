@@ -10,6 +10,16 @@
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
             <property name="hibernate.connection.charSet" value="UTF-8"/>
+
+            <!-- you can set the following additional values - here or see applicationContext.xml -->
+            <!--
+                <property name="hibernate.generate_statistics" value="true"/>
+         				<property name="hibernate.show_sql" value="true"/>
+         				<property name="hibernate.format_sql" value="true"/>
+         				<property name="hibernate.use_sql_comments" value="true"/>
+            -->
+
+
             <!-- Uncomment the following two properties for JBoss only -->
             <!-- property name="hibernate.validator.apply_to_ddl" value="false" /-->
             <!-- property name="hibernate.validator.autoregister_listeners" value="false" /-->
